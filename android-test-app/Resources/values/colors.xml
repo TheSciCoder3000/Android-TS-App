@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2c3e50</color>
+    <color name="colorPrimaryDark">#F1F1EC</color>
+    <color name="colorAccent">#3498db</color>
+	<color name="unfinishedProgress">#FF7777</color>
+	<color name="finishedProgress">#71EEB8</color>
+	<color name="NavBackground">#EBEBE7</color>
+</resources>
