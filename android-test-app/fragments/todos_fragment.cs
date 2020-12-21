@@ -13,6 +13,7 @@ using android_test_app.otherCs;
 using Android.Support.V7.Widget;
 using android_test_app.Adapters;
 using Filter = android_test_app.otherCs.Filter;
+using android_test_app.ItemDecoration;
 
 namespace android_test_app.fragments
 {
@@ -51,10 +52,19 @@ namespace android_test_app.fragments
             // recyclerView.HasFixedSize = true;
             layoutManager = new LinearLayoutManager(view.Context);
             layoutManagerFilter = new LinearLayoutManager(view.Context, LinearLayoutManager.Horizontal, false);
+
             recyclerView.SetLayoutManager(layoutManager);
             recyclerViewFilter.SetLayoutManager(layoutManagerFilter);
+
+            TaskDecoration taskDecoration = new TaskDecoration(view.Context, 12, 9, 12, 9);
+            FilterDecoration filterDecoration = new FilterDecoration(10, 0, 5, 2, view.Context);
+
+            recyclerView.AddItemDecoration(taskDecoration);
+            recyclerViewFilter.AddItemDecoration(filterDecoration);
+            
             mAdapter = new RecyclerAdapter(taskList);
             mAdapterFilter = new RecyclerAdapterFilter(filterList);
+            
             recyclerView.SetAdapter(mAdapter);
             recyclerViewFilter.SetAdapter(mAdapterFilter);
 
@@ -69,6 +79,7 @@ namespace android_test_app.fragments
                 new Filter("Today"),
                 new Filter("7 Days"),
                 new Filter("Completed"),
+                new Filter("School")
             };
 
             return mfilterList;

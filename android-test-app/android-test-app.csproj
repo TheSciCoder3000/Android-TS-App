@@ -68,6 +68,8 @@
     <Compile Include="fragments\dash_fragment.cs" />
     <Compile Include="fragments\settings_fragment.cs" />
     <Compile Include="fragments\todos_fragment.cs" />
+    <Compile Include="ItemDecoration\FilterDecoration.cs" />
+    <Compile Include="ItemDecoration\TaskDecoration.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="otherCs\Filter.cs" />
     <Compile Include="otherCs\Task.cs" />

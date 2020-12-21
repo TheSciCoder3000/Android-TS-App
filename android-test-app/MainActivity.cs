@@ -22,7 +22,6 @@ namespace android_test_app
         // ViewPager and Bottom Navbar initialization
         ViewPager _viewPager;
         BottomNavigationView _navigationView;
-        Android.Support.V4.App.Fragment[] _fragments;
 
         // Fragment Activity Initialization
         dash_fragment dashFrag = new dash_fragment();
