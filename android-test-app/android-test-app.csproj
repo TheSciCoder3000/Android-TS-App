@@ -62,12 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\RecyclerAdapter.cs" />
+    <Compile Include="Adapters\RecyclerAdapterFilter.cs" />
     <Compile Include="Adapters\ViewPagerAdapter.cs" />
     <Compile Include="fragments\calendar_fragment.cs" />
     <Compile Include="fragments\dash_fragment.cs" />
     <Compile Include="fragments\settings_fragment.cs" />
     <Compile Include="fragments\todos_fragment.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="otherCs\Filter.cs" />
     <Compile Include="otherCs\Task.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +188,19 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\cardHolder.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\FilterWidget_layout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\filter_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\filterBackground.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

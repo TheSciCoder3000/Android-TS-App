@@ -12,6 +12,7 @@ using System.Text;
 using android_test_app.otherCs;
 using Android.Support.V7.Widget;
 using android_test_app.Adapters;
+using Filter = android_test_app.otherCs.Filter;
 
 namespace android_test_app.fragments
 {
@@ -19,11 +20,12 @@ namespace android_test_app.fragments
     {
         // Temp Database Initialization
         List<Task> taskList = new List<Task>();
+        List<Filter> filterList = new List<Filter>();
 
         //RecyclerView Initialization
-        private RecyclerView recyclerView;
-        private RecyclerView.Adapter mAdapter;
-        private RecyclerView.LayoutManager layoutManager;
+        private RecyclerView recyclerView, recyclerViewFilter;
+        private RecyclerView.Adapter mAdapter, mAdapterFilter;
+        private RecyclerView.LayoutManager layoutManager, layoutManagerFilter;
 
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -41,17 +43,35 @@ namespace android_test_app.fragments
 
             // Add entries to temp task list
             taskList = fillTaskList();
+            filterList = fillFilterList();
 
             // RecyclerView Code
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.TasksLists);
+            recyclerViewFilter = view.FindViewById<RecyclerView>(Resource.Id.FilterLists);
             // recyclerView.HasFixedSize = true;
             layoutManager = new LinearLayoutManager(view.Context);
+            layoutManagerFilter = new LinearLayoutManager(view.Context, LinearLayoutManager.Horizontal, false);
             recyclerView.SetLayoutManager(layoutManager);
+            recyclerViewFilter.SetLayoutManager(layoutManagerFilter);
             mAdapter = new RecyclerAdapter(taskList);
+            mAdapterFilter = new RecyclerAdapterFilter(filterList);
             recyclerView.SetAdapter(mAdapter);
+            recyclerViewFilter.SetAdapter(mAdapterFilter);
 
 
-            return recyclerView;
+            return view;
+        }
+
+        private List<Filter> fillFilterList()
+        {
+            List<Filter> mfilterList = new List<Filter> {
+                new Filter("All"),
+                new Filter("Today"),
+                new Filter("7 Days"),
+                new Filter("Completed"),
+            };
+
+            return mfilterList;
         }
 
         private List<Task> fillTaskList()

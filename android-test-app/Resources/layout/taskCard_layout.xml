@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="17dp"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    >
     <LinearLayout
         android:orientation="vertical"
         android:padding="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/cardholder">
-        
+
         <TextView
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -20,12 +21,14 @@
             android:id="@+id/taskTitle" />
 
         <TextView
-            android:text="hello"
+            android:text="@string/date_placeholder"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/taskDate"/>
+            android:id="@+id/taskDate"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
+
 
 </RelativeLayout>
