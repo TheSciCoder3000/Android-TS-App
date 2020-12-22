@@ -71,6 +71,7 @@
     <Compile Include="ItemDecoration\FilterDecoration.cs" />
     <Compile Include="ItemDecoration\TaskDecoration.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MyActionMode\Todo_ActionMode.cs" />
     <Compile Include="otherCs\Filter.cs" />
     <Compile Include="otherCs\Task.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -206,6 +207,15 @@
     <AndroidResource Include="Resources\drawable\filterBackground.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\ContextualMenu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\check.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

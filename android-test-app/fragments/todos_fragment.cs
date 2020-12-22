@@ -55,13 +55,15 @@ namespace android_test_app.fragments
             recyclerView.SetLayoutManager(layoutManager);
             recyclerViewFilter.SetLayoutManager(layoutManagerFilter);
 
+            
+
             TaskDecoration taskDecoration = new TaskDecoration(view.Context, 12, 9, 12, 9);
             FilterDecoration filterDecoration = new FilterDecoration(10, 0, 5, 2, view.Context);
 
             recyclerView.AddItemDecoration(taskDecoration);
             recyclerViewFilter.AddItemDecoration(filterDecoration);
             
-            mAdapter = new RecyclerAdapter(taskList, recyclerView, view.Context);
+            mAdapter = new RecyclerAdapter(taskList, recyclerView, view);
             mAdapterFilter = new RecyclerAdapterFilter(filterList);
             
             recyclerView.SetAdapter(mAdapter);
