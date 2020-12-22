@@ -46,10 +46,9 @@ namespace android_test_app.fragments
             taskList = fillTaskList();
             filterList = fillFilterList();
 
-            // RecyclerView Code
+            // ----RecyclerView Code----
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.TasksLists);
             recyclerViewFilter = view.FindViewById<RecyclerView>(Resource.Id.FilterLists);
-            // recyclerView.HasFixedSize = true;
             layoutManager = new LinearLayoutManager(view.Context);
             layoutManagerFilter = new LinearLayoutManager(view.Context, LinearLayoutManager.Horizontal, false);
 
@@ -62,12 +61,11 @@ namespace android_test_app.fragments
             recyclerView.AddItemDecoration(taskDecoration);
             recyclerViewFilter.AddItemDecoration(filterDecoration);
             
-            mAdapter = new RecyclerAdapter(taskList);
+            mAdapter = new RecyclerAdapter(taskList, recyclerView, view.Context);
             mAdapterFilter = new RecyclerAdapterFilter(filterList);
             
             recyclerView.SetAdapter(mAdapter);
             recyclerViewFilter.SetAdapter(mAdapterFilter);
-
 
             return view;
         }
@@ -87,8 +85,6 @@ namespace android_test_app.fragments
 
         private List<Task> fillTaskList()
         {
-
-
             List<Task> mtaskList = new List<Task> {
                 new Task(0, "play games", 2000),
                 new Task(1, "Feed the dogs", 2002),

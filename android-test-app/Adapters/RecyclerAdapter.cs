@@ -16,19 +16,25 @@ namespace android_test_app.Adapters
     internal class RecyclerAdapter : RecyclerView.Adapter
     {
         List<Task> taskList;
+        RecyclerView recyclerView;
+        Context context;
 
-        public RecyclerAdapter(List<Task> taskList)
+        public RecyclerAdapter(List<Task> taskList, RecyclerView recyclerView, Context context)
         {
             this.taskList = taskList;
+            this.recyclerView = recyclerView;
+            this.context = context;
         }
 
         public  class myViewHolder : RecyclerView.ViewHolder
         {
             public TextView taskTitle { get; private set; }
             public TextView taskDate { get; private set; }
+            public View mainView { get; set; }
 
             public myViewHolder(View itemView) : base(itemView)
             {
+                mainView = itemView;
                 taskTitle = itemView.FindViewById<TextView>(Resource.Id.taskTitle);
                 taskDate = itemView.FindViewById<TextView>(Resource.Id.taskDate);
             }
@@ -40,8 +46,28 @@ namespace android_test_app.Adapters
         {
             myViewHolder vh = holder as myViewHolder;
 
+            vh.mainView.Click -= test_click;
+            vh.mainView.Click += test_click;
+
+            vh.mainView.LongClick -= test_longClick;
+            vh.mainView.LongClick += test_longClick;
+
             vh.taskTitle.Text = taskList[position].TaskName;
             vh.taskDate.Text = taskList[position].date.ToString();
+        }
+
+        private void test_longClick(object sender, View.LongClickEventArgs e)
+        {
+            int position = recyclerView.GetChildAdapterPosition((View)sender);
+            Task taskClicked = this.taskList[position];
+            Toast.MakeText(this.context, "This is a long click at " + taskClicked.TaskName, ToastLength.Long).Show();
+        }
+
+        private void test_click(object sender, EventArgs e)
+        {
+            int position = recyclerView.GetChildAdapterPosition((View)sender);
+            Task taskClicked = this.taskList[position];
+            Toast.MakeText(this.context, "The task you clicked is " + taskClicked.TaskName, ToastLength.Long).Show();
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
