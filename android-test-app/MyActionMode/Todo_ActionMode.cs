@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using android_test_app.Adapters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,22 +14,30 @@ namespace android_test_app.MyActionMode
 {
     class Todo_ActionMode : Java.Lang.Object, ActionMode.ICallback
     {
+        // ------------ Initialization ------------
         private Context context;
+        private RecyclerAdapter mAdapter;
 
-        public Todo_ActionMode(Context context)
+
+
+        // ------------ Constructor ------------
+        public Todo_ActionMode(Context context, RecyclerAdapter adapter)
         {
             this.context = context;
+            mAdapter = adapter;
         }
 
+
+
+        // ------------ Call back Methods ------------
         public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case Resource.Id.task_completed:
-                    Console.WriteLine("dash icon");
+                    mAdapter.FinishActionMode();
                     return true;
                 case Resource.Id.task_delete:
-                    Console.WriteLine("todo icon");
                     return true;
 
                 default:
@@ -39,11 +48,14 @@ namespace android_test_app.MyActionMode
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
             mode.MenuInflater.Inflate(Resource.Menu.ContextualMenu, menu);
+            Toast.MakeText(context, "action mode created", ToastLength.Long).Show();
             return true;
         }
 
         public void OnDestroyActionMode(ActionMode mode)
         {
+            mAdapter.FinishActionMode();
+            Toast.MakeText(context, "action mode destroyed", ToastLength.Long).Show();
             mode.Dispose();
         }
 

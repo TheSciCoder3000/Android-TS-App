@@ -19,27 +19,29 @@ namespace android_test_app.fragments
 {
     public class todos_fragment : Fragment
     {
+        // ------------ Initialization ------------
         // Temp Database Initialization
         List<Task> taskList = new List<Task>();
         List<Filter> filterList = new List<Filter>();
 
-        //RecyclerView Initialization
+        // RecyclerView Initialization
         private RecyclerView recyclerView, recyclerViewFilter;
         private RecyclerView.Adapter mAdapter, mAdapterFilter;
         private RecyclerView.LayoutManager layoutManager, layoutManagerFilter;
 
 
+
+        // ------------ Overrides ------------
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
 
-        }
+        } // Unused
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
             View view = inflater.Inflate(Resource.Layout.todos_layout, container, false);
 
             // Add entries to temp task list
@@ -47,29 +49,52 @@ namespace android_test_app.fragments
             filterList = fillFilterList();
 
             // ----RecyclerView Code----
+            // RecyclerView Assignment
             recyclerView = view.FindViewById<RecyclerView>(Resource.Id.TasksLists);
             recyclerViewFilter = view.FindViewById<RecyclerView>(Resource.Id.FilterLists);
+
+            // Layout Manager Assignment
             layoutManager = new LinearLayoutManager(view.Context);
             layoutManagerFilter = new LinearLayoutManager(view.Context, LinearLayoutManager.Horizontal, false);
 
             recyclerView.SetLayoutManager(layoutManager);
             recyclerViewFilter.SetLayoutManager(layoutManagerFilter);
-
             
-
+            // Task Decoration Assignment
             TaskDecoration taskDecoration = new TaskDecoration(view.Context, 12, 9, 12, 9);
             FilterDecoration filterDecoration = new FilterDecoration(10, 0, 5, 2, view.Context);
 
             recyclerView.AddItemDecoration(taskDecoration);
             recyclerViewFilter.AddItemDecoration(filterDecoration);
             
-            mAdapter = new RecyclerAdapter(taskList, recyclerView, view);
+            // Recycler Adapter Assignment
+            mAdapter = new RecyclerAdapter(taskList, recyclerView, view, this);
             mAdapterFilter = new RecyclerAdapterFilter(filterList);
             
             recyclerView.SetAdapter(mAdapter);
             recyclerViewFilter.SetAdapter(mAdapterFilter);
 
+
+
             return view;
+        }
+
+
+
+        // ------------ Other Functions ------------
+        public void freeze_layout(bool freeze)
+        {
+            MainActivity main_act = (MainActivity)this.Activity;
+            if (freeze)
+            {
+                // hide bottom navbar
+                main_act.actionModeActivated(true);         // Lock Fragment
+            }
+            else
+            {
+                // Unhide bottom navbar
+                main_act.actionModeActivated(false);        // Unlock Fragment
+            }
         }
 
         private List<Filter> fillFilterList()

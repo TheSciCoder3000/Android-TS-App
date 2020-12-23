@@ -16,9 +16,13 @@ namespace android_test_app.ItemDecoration
 {
     class FilterDecoration : RecyclerView.ItemDecoration
     {
+        // -------------- Initialization --------------
         int R_margin, T_margin, L_margin, B_margin;
         Context context;
 
+
+
+        // -------------- Constructor --------------
         public FilterDecoration(int r_margin, int t_margin, int l_margin, int b_margin, Context context)
         {
             R_margin = dpToPx(context, r_margin);
@@ -28,19 +32,24 @@ namespace android_test_app.ItemDecoration
             this.context = context;
         }
 
-        public static int dpToPx(Context context, int dp)
-        {
-            DisplayMetrics displayMetrics = context.Resources.DisplayMetrics;
-            return (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, dp, displayMetrics);
-        }
 
 
+        // -------------- Overrides --------------
         public override void GetItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state)
         {
             outRect.Right = R_margin;
             outRect.Top = T_margin;
             outRect.Left = L_margin;
             outRect.Bottom = B_margin;
+        }
+
+
+
+        // -------------- Other Functions --------------
+        public static int dpToPx(Context context, int dp)
+        {
+            DisplayMetrics displayMetrics = context.Resources.DisplayMetrics;
+            return (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, dp, displayMetrics);
         }
     }
 }

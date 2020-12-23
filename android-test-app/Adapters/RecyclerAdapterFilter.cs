@@ -15,13 +15,20 @@ namespace android_test_app.Adapters
 {
     class RecyclerAdapterFilter : RecyclerView.Adapter
     {
+        // -------------- Initialization --------------
         List<Filter> filterList;
 
+
+
+        // -------------- Constructor --------------
         public RecyclerAdapterFilter(List<Filter> filterList)
         {
             this.filterList = filterList;
         }
 
+
+
+        // -------------- View Holder Class --------------
         public class myFilterViewHolder : RecyclerView.ViewHolder
         {
             public TextView filterName { get; private set; }
@@ -32,6 +39,9 @@ namespace android_test_app.Adapters
             }
         }
 
+
+
+        // -------------- Overrides --------------
         public override int ItemCount => filterList.Count;
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
@@ -45,6 +55,7 @@ namespace android_test_app.Adapters
         {
             View view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.FilterWidget_layout, parent, false);
 
+            // Create view holder using view
             myFilterViewHolder holder = new myFilterViewHolder(view);
 
             return holder;

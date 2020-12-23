@@ -64,6 +64,7 @@
     <Compile Include="Adapters\RecyclerAdapter.cs" />
     <Compile Include="Adapters\RecyclerAdapterFilter.cs" />
     <Compile Include="Adapters\ViewPagerAdapter.cs" />
+    <Compile Include="Anim\CustomAnimation.cs" />
     <Compile Include="fragments\calendar_fragment.cs" />
     <Compile Include="fragments\dash_fragment.cs" />
     <Compile Include="fragments\settings_fragment.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyActionMode\Todo_ActionMode.cs" />
     <Compile Include="otherCs\Filter.cs" />
+    <Compile Include="otherCs\LockableViewPager.cs" />
     <Compile Include="otherCs\Task.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
