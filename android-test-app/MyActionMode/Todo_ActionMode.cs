@@ -48,14 +48,12 @@ namespace android_test_app.MyActionMode
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
             mode.MenuInflater.Inflate(Resource.Menu.ContextualMenu, menu);
-            Toast.MakeText(context, "action mode created", ToastLength.Long).Show();
             return true;
         }
 
         public void OnDestroyActionMode(ActionMode mode)
         {
             mAdapter.FinishActionMode();
-            Toast.MakeText(context, "action mode destroyed", ToastLength.Long).Show();
             mode.Dispose();
         }
 

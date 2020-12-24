@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
-    android:paddingRight="12dp"
-    android:paddingLeft="12dp"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:elevation="5dp"
-    android:background="@drawable/filterbackground">
+    android:id="@+id/filterContainer"
+    app:cardBackgroundColor="@color/filterBackgroundUnclicked"
+    app:contentPaddingTop="5dp"
+    app:contentPaddingBottom="5dp"
+    app:contentPaddingRight="15dp"
+    app:contentPaddingLeft="15dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="18dp">
 
     <TextView
         android:text="Medium Text"
@@ -20,4 +23,4 @@
         android:id="@+id/filterName" />
 
 
-</LinearLayout>
+</android.support.v7.widget.CardView>

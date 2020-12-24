@@ -6,4 +6,5 @@
 	<color name="unfinishedProgress">#FF7777</color>
 	<color name="finishedProgress">#71EEB8</color>
 	<color name="NavBackground">#EBEBE7</color>
+	<color name="filterBackgroundUnclicked">#C4C4C4</color>
 </resources>

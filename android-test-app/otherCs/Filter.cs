@@ -13,14 +13,27 @@ namespace android_test_app.otherCs
 {
     class Filter 
     {
+        // ------------- Initialization -------------
         public string filterName { get;  set; }
-
+        public int FilterId { get; private set; }
         public bool isSelected = false;
         public void SetSelected(bool selected)
         {
             isSelected = selected;
         }
 
+
+
+        // ------------- Constructor -------------
+        public Filter(string filterName, int id)
+        {
+            this.filterName = filterName;
+            FilterId = id;
+        }
+
+
+
+        // ------------- Other Fucntions -------------
         public static List<Filter> AllSelectedTasks(List<Filter> filterList)
         {
             List<Filter> selectedList = new List<Filter>();
@@ -33,11 +46,5 @@ namespace android_test_app.otherCs
             }
             return selectedList;
         }
-
-        public Filter(string filterName)
-        {
-            this.filterName = filterName;
-        }
-         
     }
 }

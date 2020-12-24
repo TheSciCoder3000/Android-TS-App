@@ -13,19 +13,31 @@ namespace android_test_app.otherCs
 {
     public class Task
     {
+        // ------------- Initialization -------------
         public int id { get; set; }
         public string TaskName { get; set; }
 
-        // change tha date var to whatever var/class the database uses to store dates
         public int date { get; set; }
 
         public bool isSelected = false;
 
+
+
+        // ------------- Constructor -------------
+        public Task (int id, string taskName, int date)
+        {
+            this.id = id;
+            this.TaskName = taskName;
+            this.date = date;
+        }
+
+
+
+        // ------------- Other Functions -------------
         public void SetSelected(bool selected)
         {
             isSelected = selected;
         }
-
 
         public static List<Task> AllSelectedTasks(List<Task> taskList)
         {
@@ -38,16 +50,6 @@ namespace android_test_app.otherCs
                 }
             }
             return selectedList;
-        } 
-
-        public Task (int id, string taskName, int date)
-        {
-            this.id = id;
-            this.TaskName = taskName;
-            this.date = date;
         }
-
-
-
     }
 }

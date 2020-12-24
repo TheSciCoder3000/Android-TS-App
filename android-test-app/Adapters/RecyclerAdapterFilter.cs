@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -17,13 +18,16 @@ namespace android_test_app.Adapters
     {
         // -------------- Initialization --------------
         List<Filter> filterList;
+        Context context;
+        myFilterViewHolder currSelectedView;
 
 
 
         // -------------- Constructor --------------
-        public RecyclerAdapterFilter(List<Filter> filterList)
+        public RecyclerAdapterFilter(List<Filter> filterList, View view)
         {
             this.filterList = filterList;
+            context = view.Context;
         }
 
 
@@ -32,10 +36,15 @@ namespace android_test_app.Adapters
         public class myFilterViewHolder : RecyclerView.ViewHolder
         {
             public TextView filterName { get; private set; }
+            public View mainView { get; set; }
+            public CardView FilterContainer { get; set; }
+            public int holderId { get; set; }
 
             public myFilterViewHolder(View itemView) : base(itemView)
             {
+                mainView = itemView;
                 filterName = itemView.FindViewById<TextView>(Resource.Id.filterName);
+                FilterContainer = itemView.FindViewById<CardView>(Resource.Id.filterContainer);
             }
         }
 
@@ -48,7 +57,39 @@ namespace android_test_app.Adapters
         {
             myFilterViewHolder vh = holder as myFilterViewHolder;
 
+            // Set Click events
+            vh.mainView.Click += delegate (Object sender, EventArgs e)
+            {
+                
+                if (!filterList[position].isSelected)
+                {
+                    // Unselect previous 
+                    currSelectedView.FilterContainer.SetCardBackgroundColor(ContextCompat.GetColor(context, Resource.Color.filterBackgroundUnclicked));
+                    Filter filterObj = filterList.Find(i => i.FilterId == currSelectedView.holderId);
+                    Console.WriteLine(filterObj.filterName);
+                    filterObj.SetSelected(false);
+
+                    // Select the clicked filter
+                    vh.FilterContainer.SetCardBackgroundColor(ContextCompat.GetColor(context, Resource.Color.colorAccent));
+                    currSelectedView = vh;
+                    filterList[position].SetSelected(true);
+
+                }
+                
+            };
+
+            // Assign filter property to view holder variables
             vh.filterName.Text = filterList[position].filterName;
+            vh.holderId = filterList[position].FilterId;
+
+            // Select the first filter
+            if (vh.filterName.Text == "All")
+            {
+                vh.FilterContainer.SetCardBackgroundColor(ContextCompat.GetColor(context, Resource.Color.colorAccent));
+                filterList[position].SetSelected(true);
+                currSelectedView = vh;
+            }
+
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

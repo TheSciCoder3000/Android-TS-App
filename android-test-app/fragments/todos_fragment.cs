@@ -69,7 +69,7 @@ namespace android_test_app.fragments
             
             // Recycler Adapter Assignment
             mAdapter = new RecyclerAdapter(taskList, recyclerView, view, this);
-            mAdapterFilter = new RecyclerAdapterFilter(filterList);
+            mAdapterFilter = new RecyclerAdapterFilter(filterList,  view);
             
             recyclerView.SetAdapter(mAdapter);
             recyclerViewFilter.SetAdapter(mAdapterFilter);
@@ -100,11 +100,11 @@ namespace android_test_app.fragments
         private List<Filter> fillFilterList()
         {
             List<Filter> mfilterList = new List<Filter> {
-                new Filter("All"),
-                new Filter("Today"),
-                new Filter("7 Days"),
-                new Filter("Completed"),
-                new Filter("School")
+                new Filter("All", 0),
+                new Filter("Today", 1),
+                new Filter("7 Days", 2),
+                new Filter("Completed", 3),
+                new Filter("School", 4)
             };
 
             return mfilterList;
