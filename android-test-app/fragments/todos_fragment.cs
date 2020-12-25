@@ -14,6 +14,7 @@ using Android.Support.V7.Widget;
 using android_test_app.Adapters;
 using Filter = android_test_app.otherCs.Filter;
 using android_test_app.ItemDecoration;
+using Android.Support.Design.Widget;
 
 namespace android_test_app.fragments
 {
@@ -29,7 +30,9 @@ namespace android_test_app.fragments
         private RecyclerView.Adapter mAdapter, mAdapterFilter;
         private RecyclerView.LayoutManager layoutManager, layoutManagerFilter;
 
+        private FloatingActionButton fab_addTask;
 
+        
 
         // ------------ Overrides ------------
         public override void OnCreate(Bundle savedInstanceState)
@@ -74,6 +77,7 @@ namespace android_test_app.fragments
             recyclerView.SetAdapter(mAdapter);
             recyclerViewFilter.SetAdapter(mAdapterFilter);
 
+            
 
 
             return view;
@@ -95,6 +99,13 @@ namespace android_test_app.fragments
                 // Unhide bottom navbar
                 main_act.actionModeActivated(false);        // Unlock Fragment
             }
+        }
+
+        public void onTaskCreation_Click()
+        {
+            FragmentTransaction trans = FragmentManager.BeginTransaction();
+            var fragment = new TaskCreation_Dialog();
+            fragment.Show(trans, "Dialog Fragment");
         }
 
         private List<Filter> fillFilterList()

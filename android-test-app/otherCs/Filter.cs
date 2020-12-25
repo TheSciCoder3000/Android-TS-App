@@ -46,5 +46,10 @@ namespace android_test_app.otherCs
             }
             return selectedList;
         }
+
+        public Task Tags()
+        {
+            return null;
+        }
     }
 }

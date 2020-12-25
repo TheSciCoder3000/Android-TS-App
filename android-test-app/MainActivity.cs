@@ -15,6 +15,9 @@ using android_test_app.Anim;
 using android_test_app.fragments;
 using android_test_app.otherCs;
 
+using FragmentTransaction = Android.Support.V4.App.FragmentTransaction;
+using FragmentManage = Android.Support.V4.App.FragmentManager;
+
 namespace android_test_app
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
@@ -31,6 +34,10 @@ namespace android_test_app
         calendar_fragment calendarFrag = new calendar_fragment();
         settings_fragment settingFrag = new settings_fragment();
         Stack<int> NavHeights = new Stack<int>();
+
+        // Buttons and Events
+        private FloatingActionButton Fab_addbtn;
+        private Button TaskCreate_btn, TagCreate_btn;
 
 
 
@@ -58,6 +65,17 @@ namespace android_test_app
             // ------Bottom navigation Code------
             _navigationView = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
             _navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+
+
+            // ------FAB Code------
+            Fab_addbtn = FindViewById<FloatingActionButton>(Resource.Id.fab_main);
+            Fab_addbtn.Click += (Object sender, EventArgs e) =>
+            {
+                FragmentTransaction trans = SupportFragmentManager.BeginTransaction();
+                TaskCreation_Dialog taskCreate = new TaskCreation_Dialog();
+                taskCreate.Show(trans, "Task Creation Dialog");
+            };
+
         }
 
         protected override void OnDestroy()
@@ -122,5 +140,7 @@ namespace android_test_app
             _navigationView.SelectedItemId = item.ItemId;
         }
 
-	}
+        
+
+    }
 }

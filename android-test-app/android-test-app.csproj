@@ -63,11 +63,13 @@
   <ItemGroup>
     <Compile Include="Adapters\RecyclerAdapter.cs" />
     <Compile Include="Adapters\RecyclerAdapterFilter.cs" />
+    <Compile Include="Adapters\TagSelectionAdapter.cs" />
     <Compile Include="Adapters\ViewPagerAdapter.cs" />
     <Compile Include="Anim\CustomAnimation.cs" />
     <Compile Include="fragments\calendar_fragment.cs" />
     <Compile Include="fragments\dash_fragment.cs" />
     <Compile Include="fragments\settings_fragment.cs" />
+    <Compile Include="fragments\TaskCreation_Dialog.cs" />
     <Compile Include="fragments\todos_fragment.cs" />
     <Compile Include="ItemDecoration\FilterDecoration.cs" />
     <Compile Include="ItemDecoration\TaskDecoration.cs" />
@@ -218,6 +220,31 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\taskCreationDialog.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\custom_input.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Custom_CreateBtn.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\customDialog_background.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\TagItems_layout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingTop="35dp"
+    android:paddingBottom="15dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/customdialog_background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/TextField_Cont"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+        <TextView
+            android:text="Task Name:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:inputType="text"
+            android:background="@drawable/custom_input"
+            android:hint="Task Name Here"
+            android:paddingStart="15dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TaskName_Input" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/DateField_Cont"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+        <TextView
+            android:text="Date:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:inputType="date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Date_Input" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/TagName_Input"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+        <TextView
+            android:text="Tag:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="20">
+        
+            <EditText
+                android:inputType="text"
+                android:background="@drawable/custom_input"
+                android:layout_width="0dp"
+                android:paddingStart="15dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_height="match_parent"
+                android:id="@+id/Tag_Input" 
+                android:layout_weight="19"/>
+            <Button
+                android:id="@+id/TagCreate_btn"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/custom_createbtn"
+                android:text="Create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="20dp">
+        
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/TagSet_selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/EmptyTagWarning"
+                android:text="You Don't Have any Tags Created"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/TaskCreate_btn"
+            android:background="@drawable/custom_createbtn"
+            android:textColor="@android:color/white"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>
