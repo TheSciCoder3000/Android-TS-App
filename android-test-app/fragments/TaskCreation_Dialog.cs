@@ -17,6 +17,7 @@ namespace android_test_app.fragments
 {
     public class TaskCreation_Dialog : DialogFragment
     {
+        // ---------- Initialization ---------------
         List<Filter> tagList = new List<Filter>();
 
         private RecyclerView recyclerView;
@@ -25,6 +26,9 @@ namespace android_test_app.fragments
 
         Button TaskCreate_btn, TagCreate_btn;
 
+
+
+        // ---------- Overrides ---------------
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -68,6 +72,9 @@ namespace android_test_app.fragments
             return view;
         }
 
+
+
+        // ---------- Other Functions ---------------
         private List<Filter> fillTagList()
         {
             List<Filter> tempList = new List<Filter>
@@ -96,6 +103,8 @@ namespace android_test_app.fragments
             Button btn = (Button)sender;
             View view = btn.RootView;
             EditText TaskName_Input = view.FindViewById<EditText>(Resource.Id.TaskName_Input);
+
+            Toast.MakeText(this.Context, "Create Task Btn clicked", ToastLength.Long).Show();
 
             // Date
             // Tag selected
